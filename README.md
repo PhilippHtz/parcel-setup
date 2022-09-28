@@ -1,2 +1,3 @@
-# desktop-test
- just a test repo for GitHub Desktop
+# Parcel Setup
+
+Parcel project setup
