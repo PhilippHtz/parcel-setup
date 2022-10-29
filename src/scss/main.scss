@@ -1,3 +1,15 @@
+:root {
+  --body-bg: #131b20;
+
+  --color__default: #f0f0f0;
+  --color__muted: #888888;
+
+  --shadow: #101419;
+  --highlight: #262f36;
+
+  --dimensions: 10rem;
+}
+
 @font-face {
   font-family: "Open Sans";
   src: url("../assets/fonts/OpenSans/OpenSans-VariableFont_wdth\,wght.ttf");
@@ -16,62 +28,80 @@
   font-family: "Open Sans", sans-serif;
 }
 
-/* Remove list-styles */
-ul,
-ol {
-  list-style: none;
+html {
+  background-color: var(--body-bg);
+
+  color: var(--color__default);
+  font-weight: 500;
 }
 
-/* Set core root defaults */
-html:focus-within {
-  scroll-behavior: smooth;
-}
-
-/* Set core body defaults */
 body {
+  display: grid;
+  place-content: center;
+
   min-height: 100vh;
-  text-rendering: optimizeSpeed;
-  line-height: 1.5;
 }
 
-/* 'a' elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-}
+.neumorphism {
+  position: relative;
 
-/* Make images easier to work with */
-img,
-picture {
-  max-width: 100%;
-  display: block;
-}
+  width: var(--dimensions);
+  height: var(--dimensions);
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
+  border-radius: 50%;
+  background-color: var(--body-bg);
 
-/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
-@media (prefers-reduced-motion: reduce) {
-  html:focus-within {
-    scroll-behavior: auto;
+  box-shadow: 5px 5px 12px var(--shadow), -5px -5px 12px var(--highlight);
+
+  & .waves {
+    position: absolute;
+    z-index: -1;
+
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    border-radius: 50%;
+
+    filter: blur(2px);
+
+    box-shadow: 5px 5px 12px var(--shadow), -5px -5px 12px var(--highlight),
+      inset 5px 5px 12px var(--shadow), -5px -5px 12px var(--highlight);
+
+    &:first-of-type {
+      -webkit-animation: waves 4s linear infinite;
+      animation: waves 4s linear infinite;
+    }
+    &:last-of-type {
+      -webkit-animation: waves 4s linear 2s infinite;
+      animation: waves 4s linear 2s infinite;
+    }
   }
-
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
 }
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+@-webkit-keyframes waves {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    scale: 2;
+    opacity: 0;
+  }
+}
+@keyframes waves {
+  0% {
+    scale: 1;
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    scale: 2;
+    opacity: 0;
+  }
 }

@@ -14,5 +14,8 @@
     "@parcel/transformer-sass": "^2.7.0",
     "parcel": "^2.7.0",
     "sass": "^1.55.0"
+  },
+  "dependencies": {
+    "typescript": "^4.8.4"
   }
 }
